@@ -1,0 +1,39 @@
+[
+  {
+    "id": "POD0",
+    "type": "Podcast",
+    "topic": "Compassionate leadership",
+    "n": "Introduction to the EmpathyWorks Leadership Community",
+    "series": "The 20 Rules of Compassionate Leadership",
+    "acc": "free",
+    "mins": 10,
+    "ep": 0,
+    "d": "Start here. Steve Robertson, founder of EmpathyWorks Leadership Consultancy, introduces the EmpathyWorks community for leaders who want leadership to be more human.\n\nHe explains the values and philosophy behind the community, what it sets out to achieve, the learning and development open to members, and why it exists: to give leaders a space to connect, reflect, learn and grow together.",
+    "link": "https://open.spotify.com/episode/4EwLkvTS4lS8E2XgaTJDPu"
+  },
+  {
+    "id": "POD2",
+    "type": "Podcast",
+    "topic": "Compassionate leadership",
+    "n": "Rule 2: Integrity Over Image",
+    "series": "The 20 Rules of Compassionate Leadership",
+    "d": "In this episode of The 20 Rules of Compassionate Leadership, Steve Robertson explores why integrity, authenticity and courage are essential to effective leadership.\n\nDrawing on real experiences from prison governance and executive coaching, Steve examines why doing what's right matters more than simply looking good, particularly when leadership becomes challenging.\n\nDiscover how integrity builds trust, why people respond to what leaders do rather than what they say, and how to make values-based decisions under pressure.\n\nWith practical insights and reflective exercises, this episode challenges you to consider whether your leadership truly reflects your values.\n\nBecause real leadership doesn't impress — it connects.",
+    "acc": "free",
+    "mins": 10,
+    "link": "https://open.spotify.com/episode/146e5uTo01B4H4zHoTf0wj",
+    "sub": "Be real, not just right",
+    "ep": 2
+  },
+  {
+    "id": "POD3",
+    "type": "Podcast",
+    "topic": "Compassionate leadership",
+    "n": "Rule 3: Normalise Vulnerability",
+    "series": "The 20 Rules of Compassionate Leadership",
+    "acc": "free",
+    "mins": 13,
+    "ep": 3,
+    "d": "In this episode, Steve Robertson explores vulnerability as a source of strength in leadership, not a weakness.\n\nHe looks at how vulnerability shows up in leaders, shares a story of honesty that changed a team's culture, and reviews what the research says about vulnerability, psychological safety and team performance.\n\nWith reflective questions and a practical exercise, it's for anyone who leads people, in any setting.",
+    "link": "https://open.spotify.com/episode/7aZ8O4OAwKMeZowkQZwYVe"
+  }
+]
