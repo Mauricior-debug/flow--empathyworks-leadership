@@ -140,9 +140,7 @@ export default function Home() {
         <View style={{ paddingHorizontal: 20 }}>
           <Press onPress={() => router.push('/article?id=' + article.id)} label={article.n} style={{ borderRadius: 18, overflow: 'hidden', backgroundColor: c.card, borderWidth: 1, borderColor: c.line }}>
             <View style={{ flexDirection: 'row' }}>
-              <View style={{ width: 118, height: 140 }}>
-                <PhotoCard source={photos.steveSuit} title="" height={140} />
-              </View>
+              <Image source={photos.steveSuit} style={{ width: 118, height: 140 }} contentFit="cover" contentPosition="center" accessibilityLabel="Steve Robertson" />
               <View style={{ flex: 1, padding: 14, gap: 6, justifyContent: 'center' }}>
                 <Eyebrow>Leadership Articles</Eyebrow>
                 <Text style={{ color: c.ink, fontFamily: semibold, fontSize: font(16), lineHeight: font(21) }}>{article.n}</Text>
@@ -155,28 +153,40 @@ export default function Home() {
 
       <View style={{ paddingHorizontal: 20, gap: 10 }}>
         <Text style={{ color: c.ink, fontFamily: display, fontSize: font(22) }}>Your leadership</Text>
-        <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 10 }}>
-          {tiles.map((tile, index) => (
-            <Press
-              key={tile[0]}
-              onPress={() => router.push(tile[2])}
-              label={tile[0]}
-              style={{
-                width: index === tiles.length - 1 ? '100%' : '47%',
-                backgroundColor: c.card,
-                borderRadius: 16,
-                borderWidth: 1,
-                borderColor: c.line,
-                padding: 14,
-                gap: 6,
-                minHeight: 92,
-              }}
-            >
-              <Icon name={tile[3]} color={c.spruce} />
-              <Text style={{ color: c.ink, fontFamily: semibold, fontSize: font(16) }}>{tile[0]}</Text>
-              <Text style={{ color: c.muted, fontFamily: body, fontSize: font(13) }}>{tile[1]}</Text>
-            </Press>
-          ))}
+        <View style={{ gap: 10 }}>
+          {Array.from({ length: Math.ceil(tiles.length / 2) }, (_, row) => {
+            const pair = tiles.slice(row * 2, row * 2 + 2);
+            return (
+              <View key={pair[0][0]} style={{ flexDirection: 'row', gap: 10 }}>
+                {pair.map((tile) => (
+                  <View key={tile[0]} style={{ flex: 1, minWidth: 0 }}>
+                    <Press
+                      onPress={() => router.push(tile[2])}
+                      label={tile[0]}
+                      style={{
+                        flex: 1,
+                        backgroundColor: c.card,
+                        borderRadius: 16,
+                        borderWidth: 1,
+                        borderColor: c.line,
+                        padding: 14,
+                        gap: 6,
+                        minHeight: 108,
+                      }}
+                    >
+                      <Icon name={tile[3]} color={c.spruce} />
+                      <Text style={{ color: c.ink, fontFamily: semibold, fontSize: font(16), lineHeight: font(21) }} numberOfLines={2}>
+                        {tile[0]}
+                      </Text>
+                      <Text style={{ color: c.muted, fontFamily: body, fontSize: font(13), lineHeight: font(18) }} numberOfLines={2}>
+                        {tile[1]}
+                      </Text>
+                    </Press>
+                  </View>
+                ))}
+              </View>
+            );
+          })}
         </View>
       </View>
     </TabScreen>

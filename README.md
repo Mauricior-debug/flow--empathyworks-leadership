@@ -8,10 +8,10 @@ Tagline: Helping people lead well in hard places.
 
 ```bash
 npm install
-npx expo start
+npx expo start --tunnel ngrok --go
 ```
 
-Open the project in Expo Go (SDK 56). There is no server, no account provider and no card payment. Everything you enter stays on the phone.
+Open the project in Expo Go for SDK 58. Scan the QR code that command prints. There is no server, no account provider and no card payment. Everything you enter stays on the phone.
 
 ## Demo on this phone
 

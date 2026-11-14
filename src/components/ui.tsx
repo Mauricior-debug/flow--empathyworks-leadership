@@ -10,6 +10,7 @@ import {
   Text,
   TextInput,
   View,
+  type StyleProp,
   type TextInputProps,
   type ViewStyle,
 } from 'react-native';
@@ -44,15 +45,26 @@ export function Press({
 }: {
   onPress?: () => void;
   disabled?: boolean;
-  style?: ViewStyle | ViewStyle[];
+  style?: StyleProp<ViewStyle>;
   children: ReactNode;
   label?: string;
   haptic?: boolean;
 }) {
   const scale = useSharedValue(1);
   const anim = useAnimatedStyle(() => ({ transform: [{ scale: scale.value }] }));
+  const flat = StyleSheet.flatten(style) || {};
+  const fills = flat.width != null || flat.flex != null || flat.flexGrow != null || flat.flexBasis != null;
+  const outer: ViewStyle = {
+    flex: flat.flex,
+    flexGrow: flat.flexGrow,
+    flexBasis: flat.flexBasis,
+    width: flat.width,
+    alignSelf: flat.alignSelf,
+    minWidth: flat.minWidth,
+    maxWidth: flat.maxWidth,
+  };
   return (
-    <Animated.View style={anim}>
+    <Animated.View style={[fills ? outer : null, anim]}>
       <Pressable
         accessibilityRole="button"
         accessibilityLabel={label}
@@ -67,7 +79,12 @@ export function Press({
           if (haptic) Haptics.selectionAsync().catch(() => {});
           onPress?.();
         }}
-        style={({ pressed }) => [style, pressed && reduceMotion ? { opacity: 0.72 } : null, disabled ? { opacity: 0.45 } : null]}
+        style={({ pressed }) => [
+          style,
+          fills ? { width: '100%', flex: undefined, flexGrow: undefined, flexBasis: undefined } : null,
+          pressed && reduceMotion ? { opacity: 0.72 } : null,
+          disabled ? { opacity: 0.45 } : null,
+        ]}
       >
         {children}
       </Pressable>
