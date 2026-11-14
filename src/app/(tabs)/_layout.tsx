@@ -42,24 +42,27 @@ export default function TabsLayout() {
             const route = state.routes.find((entry) => entry.name === item.name);
             const on = state.routes[state.index]?.name === item.name;
             return (
-              <Press
-                key={item.name}
-                label={item.label}
-                onPress={() => {
-                  if (route) navigateToTab(route.key);
-                }}
-                style={{ flex: 1, minHeight: 56, alignItems: 'center', justifyContent: 'center', gap: 2 }}
-              >
-                <View style={{ alignItems: 'center', backgroundColor: on ? c.spruceSoft : 'transparent', borderRadius: 12, paddingHorizontal: 12, paddingVertical: 4 }}>
-                  <Icon name={item.icon} color={on ? c.spruce : c.muted} size={22} />
-                  {item.name === 'community' && badge > 0 ? (
-                    <View style={{ position: 'absolute', top: -2, right: 4, minWidth: 16, height: 16, borderRadius: 8, backgroundColor: c.sunrise, alignItems: 'center', justifyContent: 'center' }}>
-                      <Text style={{ color: '#fff', fontSize: 10, fontFamily: semibold }}>{badge}</Text>
-                    </View>
-                  ) : null}
-                </View>
-                <Text style={{ color: on ? c.spruce : c.muted, fontFamily: semibold, fontSize: font(11) }}>{item.label}</Text>
-              </Press>
+              <View key={item.name} style={{ flex: 1, minWidth: 0 }}>
+                <Press
+                  label={item.label}
+                  onPress={() => {
+                    if (route) navigateToTab(route.key);
+                  }}
+                  style={{ minHeight: 56, alignItems: 'center', justifyContent: 'center', gap: 2, paddingVertical: 4 }}
+                >
+                  <View style={{ minWidth: 56, alignItems: 'center', backgroundColor: on ? c.spruceSoft : 'transparent', borderRadius: 12, paddingHorizontal: 8, paddingVertical: 4 }}>
+                    <Icon name={item.icon} color={on ? c.spruce : c.muted} size={22} />
+                    {item.name === 'community' && badge > 0 ? (
+                      <View style={{ position: 'absolute', top: -2, right: 2, minWidth: 16, height: 16, borderRadius: 8, backgroundColor: c.sunrise, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 3 }}>
+                        <Text style={{ color: '#fff', fontSize: 10, fontFamily: semibold }}>{badge}</Text>
+                      </View>
+                    ) : null}
+                  </View>
+                  <Text numberOfLines={1} style={{ color: on ? c.spruce : c.muted, fontFamily: semibold, fontSize: font(11), textAlign: 'center' }}>
+                    {item.label}
+                  </Text>
+                </Press>
+              </View>
             );
           })}
         </View>
