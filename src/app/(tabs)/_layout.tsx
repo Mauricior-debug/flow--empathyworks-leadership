@@ -23,7 +23,7 @@ export default function TabsLayout() {
   return (
     <Tabs
       screenOptions={{ headerShown: false, animation: 'shift' as const }}
-      tabBar={({ state, navigation }) => (
+      tabBar={({ state, navigateToTab }) => (
         <View
           style={{
             flexDirection: 'row',
@@ -34,13 +34,16 @@ export default function TabsLayout() {
             paddingTop: 6,
           }}
         >
-          {ITEMS.map((item, index) => {
-            const on = state.index === index;
+          {ITEMS.map((item) => {
+            const route = state.routes.find((entry) => entry.name === item.name);
+            const on = state.routes[state.index]?.name === item.name;
             return (
               <Press
                 key={item.name}
                 label={item.label}
-                onPress={() => navigation.navigate(item.name)}
+                onPress={() => {
+                  if (route) navigateToTab(route.key);
+                }}
                 style={{ flex: 1, minHeight: 56, alignItems: 'center', justifyContent: 'center', gap: 2 }}
               >
                 <View style={{ alignItems: 'center', backgroundColor: on ? c.spruceSoft : 'transparent', borderRadius: 12, paddingHorizontal: 12, paddingVertical: 4 }}>
