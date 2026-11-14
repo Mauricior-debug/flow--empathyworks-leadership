@@ -7,6 +7,10 @@ import { communityBadge } from '../../store/logic';
 import { useApp } from '../../store/store';
 import { useTheme } from '../../theme/Theme';
 
+export const unstable_settings = {
+  initialRouteName: 'home',
+};
+
 const ITEMS: { name: string; label: string; icon: IconName }[] = [
   { name: 'home', label: 'Home', icon: 'home' },
   { name: 'reflect', label: 'Reflect', icon: 'sun' },
@@ -60,6 +64,12 @@ export default function TabsLayout() {
           })}
         </View>
       )}
-    />
+    >
+      <Tabs.Screen name="home" options={{ title: 'Home' }} />
+      <Tabs.Screen name="reflect" options={{ title: 'Reflect' }} />
+      <Tabs.Screen name="learn" options={{ title: 'Learn' }} />
+      <Tabs.Screen name="community" options={{ title: 'Community' }} />
+      <Tabs.Screen name="menu" options={{ title: 'Menu' }} />
+    </Tabs>
   );
 }

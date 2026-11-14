@@ -32,6 +32,14 @@ type Api = {
 
 const Ctx = createContext<Api | null>(null);
 
+type Chrome = {
+  toastMsg: string | null;
+  sheet: Sheet | null;
+  closeSheet: () => void;
+};
+
+const ChromeCtx = createContext<Chrome | null>(null);
+
 export function AppProvider({ children }: { children: ReactNode }) {
   const [data, setData] = useState<AppData | null>(null);
   const [toastMsg, setToastMsg] = useState<string | null>(null);
@@ -104,12 +112,26 @@ export function AppProvider({ children }: { children: ReactNode }) {
     };
   }, [data, toast, set]);
 
+  const chrome = useMemo<Chrome>(
+    () => ({ toastMsg, sheet, closeSheet: () => setSheet(null) }),
+    [toastMsg, sheet],
+  );
+
   return (
     <Ctx.Provider value={api}>
-      {children}
-      <Toast message={toastMsg} />
-      <SheetView sheet={sheet} onClose={() => setSheet(null)} />
+      <ChromeCtx.Provider value={chrome}>{children}</ChromeCtx.Provider>
     </Ctx.Provider>
+  );
+}
+
+export function AppChrome() {
+  const chrome = useContext(ChromeCtx);
+  if (!chrome) return null;
+  return (
+    <>
+      <Toast message={chrome.toastMsg} />
+      <SheetView sheet={chrome.sheet} onClose={chrome.closeSheet} />
+    </>
   );
 }
 

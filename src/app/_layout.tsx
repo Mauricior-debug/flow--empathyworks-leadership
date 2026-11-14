@@ -8,7 +8,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Image } from 'expo-image';
 import { mark } from '../data/images';
-import { AppProvider, useApp } from '../store/store';
+import { AppChrome, AppProvider, useApp } from '../store/store';
 import { ThemeProvider, useMode, useTheme } from '../theme/Theme';
 
 function Splash() {
@@ -31,6 +31,7 @@ function RootStack() {
     <ThemeProvider mode={mode} big={!!data?.big} fonts>
       <StatusBar style={mode === 'dark' ? 'light' : 'dark'} />
       <ThemedStack mode={mode} />
+      <AppChrome />
     </ThemeProvider>
   );
 }
