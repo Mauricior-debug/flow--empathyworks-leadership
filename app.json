@@ -1,0 +1,42 @@
+{
+  "expo": {
+    "name": "EmpathyWorks",
+    "slug": "empathyworks",
+    "scheme": "empathyworks",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/apple-touch-icon.png",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "backgroundColor": "#F4F4F2",
+    "splash": {
+      "image": "./assets/apple-touch-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#F4F4F2"
+    },
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "uk.co.leadershipconsultant.empathyworks",
+      "icon": "./assets/apple-touch-icon.png"
+    },
+    "android": {
+      "package": "uk.co.leadershipconsultant.empathyworks",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/apple-touch-icon.png",
+        "backgroundColor": "#F4F4F2"
+      }
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "EmpathyWorks uses a photo you choose for your profile."
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": false
+    }
+  }
+}
